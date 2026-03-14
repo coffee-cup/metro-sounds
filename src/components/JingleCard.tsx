@@ -17,7 +17,7 @@ export function JingleCard({ jingle, isPlaying, onPlay }: JingleCardProps) {
     <button
       onClick={onPlay}
       className={cn(
-        "flex w-full items-start gap-3 border border-rule-light px-4 py-3",
+        "flex w-full items-start gap-3 border-2 border-rule-light px-4 py-3",
         "text-left",
         isPlaying && "bg-ink text-white"
       )}

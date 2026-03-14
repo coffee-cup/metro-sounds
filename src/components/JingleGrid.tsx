@@ -17,7 +17,7 @@ export function JingleGrid({ jingles, currentId, onPlay }: JingleGridProps) {
   }
 
   return (
-    <div className="grid grid-cols-2 gap-2 px-5 pb-8">
+    <div className="grid grid-cols-1 gap-2 px-5 pb-8 sm:grid-cols-2">
       {jingles.map((jingle) => (
         <JingleCard
           key={jingle.id}
