@@ -11,6 +11,7 @@
   "nederlandse-spoorwegen",
   "national-rail",
   "swiss-federal-railways-french",
+  "amtrak",
   "trenitalia",
   "via-rail-v1",
   "via-rail-v2",
@@ -22,6 +23,5 @@
   "kereta-api-indonesia",
   "mav-v1",
   "singapore-mrt",
-  "zssk-v1",
-  "amtrak"
+  "zssk-v1"
 ]
