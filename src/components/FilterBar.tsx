@@ -1,5 +1,4 @@
 import { cn } from "../lib/cn"
-import { REGION_BG_COLORS } from "../lib/regions"
 
 type FilterBarProps = {
   regions: string[]
@@ -9,14 +8,14 @@ type FilterBarProps = {
 
 export function FilterBar({ regions, active, onSelect }: FilterBarProps) {
   return (
-    <div className="flex gap-2 overflow-x-auto px-5 pb-4 scrollbar-none">
+    <div className="flex gap-1 overflow-x-auto px-5 py-4 scrollbar-none">
       <button
         onClick={() => onSelect(null)}
         className={cn(
-          "shrink-0 rounded-full px-4 py-1.5 text-sm font-600 transition-colors",
+          "shrink-0 border border-rule-light px-3 py-1 text-xs font-600 uppercase tracking-wide",
           active === null
-            ? "bg-ink text-white"
-            : "bg-border/50 text-ink-muted hover:bg-border"
+            ? "border-ink bg-ink text-white"
+            : "text-ink-muted hover:border-ink hover:text-ink"
         )}
       >
         All
@@ -26,10 +25,10 @@ export function FilterBar({ regions, active, onSelect }: FilterBarProps) {
           key={region}
           onClick={() => onSelect(region)}
           className={cn(
-            "shrink-0 rounded-full px-4 py-1.5 text-sm font-600 transition-colors",
+            "shrink-0 border border-rule-light px-3 py-1 text-xs font-600 uppercase tracking-wide",
             active === region
-              ? cn(REGION_BG_COLORS[region], "text-white")
-              : "bg-border/50 text-ink-muted hover:bg-border"
+              ? "border-ink bg-ink text-white"
+              : "text-ink-muted hover:border-ink hover:text-ink"
           )}
         >
           {region}

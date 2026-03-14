@@ -1,5 +1,5 @@
 import { cn } from "../lib/cn"
-import { REGION_COLORS } from "../lib/regions"
+import { REGION_DOT_COLORS } from "../lib/regions"
 import type { Jingle } from "../types"
 
 type JingleCardProps = {
@@ -9,29 +9,42 @@ type JingleCardProps = {
 }
 
 export function JingleCard({ jingle, isPlaying, onPlay }: JingleCardProps) {
-  const borderColor = jingle.region
-    ? REGION_COLORS[jingle.region] ?? "border-l-border"
-    : "border-l-border"
+  const dotColor = jingle.region
+    ? REGION_DOT_COLORS[jingle.region] ?? "bg-ink-muted"
+    : "bg-ink-muted"
 
   return (
     <button
       onClick={onPlay}
       className={cn(
-        "flex w-full items-center gap-3 rounded-lg border-l-4 bg-surface-card px-4 py-3.5",
-        "text-left shadow-sm hover:shadow-md",
-        "active:scale-[0.98] transition-shadow",
-        borderColor,
-        isPlaying && "ring-2 ring-ink/10"
+        "flex w-full items-start gap-3 border border-rule-light px-4 py-3",
+        "text-left",
+        isPlaying && "bg-ink text-white"
       )}
     >
-      <div className="flex size-9 shrink-0 items-center justify-center rounded-full bg-surface">
+      <div
+        className={cn(
+          "mt-1 flex size-7 shrink-0 items-center justify-center",
+          isPlaying ? "text-white" : "text-ink"
+        )}
+      >
         {isPlaying ? <PauseIcon /> : <PlayIcon />}
       </div>
-      <div className="min-w-0">
-        <p className="truncate text-sm font-600 text-ink">{jingle.label}</p>
-        {jingle.country && (
-          <p className="truncate text-xs text-ink-muted">{jingle.country}</p>
-        )}
+      <div className="min-w-0 pt-0.5">
+        <p className={cn("text-sm font-600 text-pretty", isPlaying ? "text-white" : "text-ink")}>
+          {jingle.label}
+        </p>
+        <div className="mt-1 flex items-center gap-1.5">
+          <span className={cn("inline-block size-1.5 rounded-full", dotColor)} />
+          <span
+            className={cn(
+              "text-xs",
+              isPlaying ? "text-white/60" : "text-ink-muted"
+            )}
+          >
+            {jingle.country ?? jingle.region ?? "Unknown"}
+          </span>
+        </div>
       </div>
     </button>
   )
@@ -39,29 +52,17 @@ export function JingleCard({ jingle, isPlaying, onPlay }: JingleCardProps) {
 
 function PlayIcon() {
   return (
-    <svg
-      width="14"
-      height="14"
-      viewBox="0 0 14 14"
-      fill="currentColor"
-      className="ml-0.5 text-ink-muted"
-    >
-      <path d="M3 1.5v11l9-5.5L3 1.5z" />
+    <svg width="12" height="14" viewBox="0 0 12 14" fill="currentColor">
+      <path d="M0 0v14l12-7L0 0z" />
     </svg>
   )
 }
 
 function PauseIcon() {
   return (
-    <svg
-      width="14"
-      height="14"
-      viewBox="0 0 14 14"
-      fill="currentColor"
-      className="text-ink"
-    >
-      <rect x="2.5" y="1.5" width="3" height="11" rx="0.5" />
-      <rect x="8.5" y="1.5" width="3" height="11" rx="0.5" />
+    <svg width="12" height="14" viewBox="0 0 12 14" fill="currentColor">
+      <rect x="0" y="0" width="4" height="14" />
+      <rect x="8" y="0" width="4" height="14" />
     </svg>
   )
 }
