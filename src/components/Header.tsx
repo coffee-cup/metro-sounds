@@ -6,7 +6,7 @@ export function Header() {
           Metro Sounds
         </h1>
       </a>
-      <p className="mt-2 text-sm text-ink-secondary text-pretty">
+      <p className="mt-2 text-base text-ink-secondary text-pretty">
         Railway jingles from around the world
       </p>
       <div className="mt-6 h-1 bg-rule" />
