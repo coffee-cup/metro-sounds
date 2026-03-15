@@ -16,7 +16,7 @@ export default function TriviaPage() {
   return (
     <div className="mx-auto min-h-dvh max-w-3xl">
       <Header />
-      <p className="px-5 pb-4 text-sm font-600 text-ink-secondary">March 14, 2026 Trivia</p>
+      <h2 className="px-5 pt-4 pb-6 font-display text-xl font-700 text-ink">March 14, 2026 Trivia</h2>
       <div className="flex flex-col gap-2 px-5 pb-8">
         {triviaJingles.map((jingle, i) => (
           <div key={jingle.id} className="flex items-start gap-3">
